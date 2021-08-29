@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Play with me</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class='container'>
+        <table class='board'>
+            <tr class='row'>
+                <td align='center' class='cubik' id='00' onclick="human_move(this)"></td>
+                <td align='center' class='cubik' id='01' onclick="human_move(this)"></td>
+                <td align='center' class='cubik' id='02' onclick="human_move(this)"></td>
+            </tr>
+            <tr class='row'>
+                <td align='center' class='cubik' id='10' onclick="human_move(this)"></td>
+                <td align='center' class='cubik' id='11' onclick="human_move(this)"></td>
+                <td align='center' class='cubik' id='12' onclick="human_move(this)"></td>
+            </tr>
+            <tr class='row'>
+                <td align='center' class='cubik' id='20' onclick="human_move(this)"></td>
+                <td align='center' class='cubik' id='21' onclick="human_move(this)"></td>
+                <td align='center' class='cubik' id='22' onclick="human_move(this)"></td>
+            </tr>
+        </table>
+    </div>
+    <div class='footer'>
+        <span class="button" onclick="reset()">NEW GAME</span>
+        <span class="button" onclick="plays_as_x()">PLAYS AS X</span>
+        <span class="button" onclick="plays_as_o()">PLAYS AS O</span>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
