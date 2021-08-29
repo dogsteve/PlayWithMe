@@ -71,7 +71,7 @@ function get_score(board) {
     return 0
 }
 
-function minimax(board, depth, isMax) {
+function minimax(board, depth, isMax, alpha, beta) {
     let score = get_score(board);
     if (score > 0)
         return score;
@@ -85,8 +85,12 @@ function minimax(board, depth, isMax) {
             for (let j = 0; j < 3; j++) {
                 if (board[i][j] == '_') {
                     board[i][j] = bot;
-                    best = Math.max(best, minimax(board, depth + 1, !isMax));
+                    best = Math.max(best, minimax(board, depth + 1, !isMax, alpha, beta));
+                    alpha = Math.max(alpha, best);
                     board[i][j] = '_';
+                    if (alpha >= beta) {
+                        break;
+                    }
                 }
             }
         }
@@ -101,8 +105,12 @@ function minimax(board, depth, isMax) {
 
                 if (board[i][j] == '_') {
                     board[i][j] = human;
-                    best = Math.min(best, minimax(board, depth + 1, !isMax));
+                    best = Math.min(best, minimax(board, depth + 1, !isMax, alpha, beta));
+                    beta = Math.min(beta, best);
                     board[i][j] = '_';
+                    if (alpha >= beta) {
+                        break;
+                    }
                 }
             }
         }
@@ -118,7 +126,7 @@ function bot_move(board) {
         for (var j = 0; j < board[i].length; j++) {
             if (board[i][j] === '_') {
                 board[i][j] = bot;
-                let child_value = minimax(board, 0, false);
+                let child_value = minimax(board, 0, false, -9999, 9999);
                 board[i][j] = '_';
                 if (child_value > best_score) {
                     best_score = child_value;
